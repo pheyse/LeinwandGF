@@ -80,3 +80,13 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# Gradle Signing
+signing.properties
+trestle.keystore
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
