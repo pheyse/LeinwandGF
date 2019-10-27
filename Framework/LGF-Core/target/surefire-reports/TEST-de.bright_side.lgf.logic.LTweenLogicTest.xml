@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.bright_side.lgf.logic.LTweenLogicTest" time="0.097" tests="19" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core\target\test-classes;C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core\target\classes;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter\5.5.2\junit-jupiter-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\phhey\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\phhey\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\phhey\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;C:\Users\phhey\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Berlin"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="user.country" value="DE"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\phhey\AppData\Local\Temp\surefire3992481957984737285\surefirebooter2267322386888057691.jar C:\Users\phhey\AppData\Local\Temp\surefire3992481957984737285 2019-10-26T11-28-14_009-jvmRun1 surefire5682713402243984813tmp surefire_08639751716120336645tmp"/>
+    <property name="surefire.test.class.path" value="C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core\target\test-classes;C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core\target\classes;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter\5.5.2\junit-jupiter-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\phhey\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\phhey\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\phhey\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;C:\Users\phhey\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\phhey"/>
+    <property name="user.language" value="de"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_131\jre"/>
+    <property name="basedir" value="C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\phhey\AppData\Local\Temp\surefire3992481957984737285\surefirebooter2267322386888057691.jar"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_131-b11"/>
+    <property name="user.name" value="phhey"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\phhey\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\phhey\AppData\Local\Temp\"/>
+    <property name="java.version" value="1.8.0_131"/>
+    <property name="user.dir" value="C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_221/bin/server;C:/Program Files/Java/jre1.8.0_221/bin;C:/Program Files/Java/jre1.8.0_221/lib/amd64;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\PortablePrograms\Maven\apache-maven-3.6.2\bin;;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\nodejs\;C:\Users\phhey\AppData\Local\Microsoft\WindowsApps;C:\Users\phhey\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk1.8.0_131\bin;;C:\Users\phhey\AppData\Local\Microsoft\WindowsApps;C:\Users\phhey\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\phhey\AppData\Roaming\npm;C:\PortablePrograms\Eclipse\eclipse-jee-2019-06-R-win32-x86_64\eclipse;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.131-b11"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="updateTween_moveTweenExactlyDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0.031"/>
+  <testcase name="updateTween_rotationForwardClockwiseTweenDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_textSizeTweenDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_rotationForwardClockwiseTweenNotDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_moveTweenNotDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_multipleMoveTweensFirstHalfDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_addAndMoveTweensExactlyDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_addAndMoveTweensNotDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_rotationForwardCounterClockwiseTweenNotDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0.016"/>
+  <testcase name="updateTween_textSizeTweenNotDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_sizeTweenDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0.015"/>
+  <testcase name="updateTween_multipleMoveTweensSecondExactlyDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_addAndMoveTweensDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_multipleMoveTweensSecondHalfDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_sizeTweenExactlyDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_moveTweenDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_multipleMoveTweensThirdHalfDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_multipleMoveTweensAllDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+  <testcase name="updateTween_sizeTweenNotDone" classname="de.bright_side.lgf.logic.LTweenLogicTest" time="0"/>
+</testsuite>

@@ -1,0 +1,484 @@
+{
+  "objects": [
+    {
+      "id": "0",
+      "pos": {
+        "x": 108.72384720012413,
+        "y": 86.74048290779297
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 12.018230229815664,
+      "rotation": 200.65901179274962,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "1",
+      "pos": {
+        "x": 83.14914119375983,
+        "y": 39.48656732466078
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 10.791216237976245,
+      "rotation": 51.691532212282716,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "2",
+      "pos": {
+        "x": 167.17827864810948,
+        "y": 7.465602511935607
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 11.692301383310795,
+      "rotation": 128.09111517825187,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "3",
+      "pos": {
+        "x": 175.6339814325595,
+        "y": 37.21125069459736
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 11.228279628189807,
+      "rotation": 337.2138890438682,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "4",
+      "pos": {
+        "x": 105.5845973818829,
+        "y": 63.889247788188605
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 14.980578788017725,
+      "rotation": 226.1379693420515,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "5",
+      "pos": {
+        "x": 132.18794992830487,
+        "y": 74.1151912439812
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 13.143747382966058,
+      "rotation": 63.45239170432076,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "6",
+      "pos": {
+        "x": 25.331834836152428,
+        "y": 2.7850228033218327
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 11.317968639649244,
+      "rotation": 322.2821409352922,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "7",
+      "pos": {
+        "x": 104.77576654097977,
+        "y": 25.140690247781496
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 13.599207841886022,
+      "rotation": 3.391760316510264,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "8",
+      "pos": {
+        "x": 73.36873197426863,
+        "y": 10.98813673127565
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 13.49205075563846,
+      "rotation": 344.4511583963491,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "9",
+      "pos": {
+        "x": 32.291836418478425,
+        "y": 72.7682481853986
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 11.807982276648792,
+      "rotation": 133.94227021425294,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "10",
+      "pos": {
+        "x": 58.18632174765905,
+        "y": 71.81303669296533
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 14.505800224326768,
+      "rotation": 113.54437347895697,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "11",
+      "pos": {
+        "x": 173.10780303217894,
+        "y": 3.1658578318114396
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 12.381056277339566,
+      "rotation": 119.96146907635716,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "12",
+      "pos": {
+        "x": 168.75228647476172,
+        "y": 46.66186187903709
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 13.617859870268143,
+      "rotation": 211.23095609628047,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "13",
+      "pos": {
+        "x": 65.67540148918917,
+        "y": 78.15587963589707
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 14.479076289495648,
+      "rotation": 82.14749263070054,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "14",
+      "pos": {
+        "x": 25.802278408341163,
+        "y": 98.37872291515066
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 12.829895804574829,
+      "rotation": 235.4743321576409,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "15",
+      "pos": {
+        "x": 91.26041216705083,
+        "y": 49.53081559584231
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 13.764946225164902,
+      "rotation": 324.8053626445408,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "16",
+      "pos": {
+        "x": 147.74661966301775,
+        "y": 15.590024534956076
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 11.340566112681824,
+      "rotation": 280.7083804404062,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "17",
+      "pos": {
+        "x": 163.51517312031388,
+        "y": 57.28974986878867
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 10.301551713702706,
+      "rotation": 60.6845504402696,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "18",
+      "pos": {
+        "x": 20.422565681924393,
+        "y": 42.94213114614705
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 11.735635060213983,
+      "rotation": 125.1307834338703,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    },
+    {
+      "id": "19",
+      "pos": {
+        "x": 105.19174228999641,
+        "y": 80.02606368435242
+      },
+      "image": {
+        "id": "SHAPE_CIRCLE",
+        "hasAlpha": false
+      },
+      "size": {
+        "x": 5.0,
+        "y": 5.0
+      },
+      "speed": 11.78914680374319,
+      "rotation": 235.36595855044533,
+      "visible": true,
+      "textSize": 10.0,
+      "nextPathItem": 0,
+      "maximumRotationPerSecond": 0.0,
+      "animationFrameIndex": 0,
+      "remainingSecondsInAnimationFrame": 0.0,
+      "touchable": false
+    }
+  ]
+}

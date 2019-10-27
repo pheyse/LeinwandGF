@@ -1,0 +1,9 @@
+de\bright_side\lgfdemo\presenter\DemoScreenAPresenter.class
+de\bright_side\lgfdemo\pconly\DemoResourceDAO.class
+de\bright_side\lgfdemo\model\DemoImage.class
+de\bright_side\lgfdemo\presenter\DemoScreenBPresenter.class
+de\bright_side\lgfdemo\model\DemoRawResource.class
+de\bright_side\lgfdemo\pconly\DemoLInstance.class
+de\bright_side\lgfdemo\model\DemoFont.class
+de\bright_side\lgfdemo\base\DemoConstants.class
+de\bright_side\lgfdemo\model\DemoAnimation.class
