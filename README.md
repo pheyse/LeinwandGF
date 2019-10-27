@@ -24,9 +24,9 @@ Apace V2
 In the dependencies section of the „build.gralde“ file simply add this line:
 
 ```
-implementation 'de.bright-side.lgf:lgf-android:1.0.0'
+implementation 'de.bright-side.lgf:lgf-android:1.0.1'
 ```
-(Please replace "1.0.0" with the current framwork version.)
+(Please replace "1.0.1" with the current framwork version.)
 
 
 ## Java Deskop (Windows, Linux, Mac)
