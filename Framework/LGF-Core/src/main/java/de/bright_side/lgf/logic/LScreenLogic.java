@@ -146,7 +146,9 @@ public class LScreenLogic {
     }
 
     /**
-     * determine rotation and consider the fact that since the maximum degrees is 360, the neededRotation may be 361 or -1 if that is closer to the
+     * @param object object for which to calculate the needed rotation
+     * @param dest destination
+     * @return rotation and considering the fact that since the maximum degrees is 360, the neededRotation may be 361 or -1 if that is closer to the
      * current rotation. At the end the needed rotation is then put in the 0-360 range again
      */
     protected double getNeededRotationClosedToCurrentRotationAndOutOfRange(LObject object, LVector dest){

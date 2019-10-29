@@ -198,6 +198,8 @@ public class LMathsUtil {
     }
 
     /**
+     * @param p1 point 1
+     * @param p2 point 2
      * @return the angle in degrees from point 1 to point 2
      */
     public static double getAngleInDegrees(LVector p1, LVector p2) {

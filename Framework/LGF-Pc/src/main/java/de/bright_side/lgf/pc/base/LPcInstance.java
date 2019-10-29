@@ -27,10 +27,11 @@ public abstract class LPcInstance {
 	
 	/**
 	 * 
-	 * @param resourceDAO
+	 * @param resourceDAO resource DAO instance
+	 * @param windowContentSize the size of the window in pixels (not counting the pixels used for title bar etc.)
 	 * @param prefVirtualSize preferred virtual size
-	 * @param scaleMode 
-	 * @param aspectRatio 
+	 * @param scaleMode mode to scale (see documentation)
+	 * @param aspectRatio aspect ratio of the device
 	 */
 	public LPcInstance(LPcResourceDAO resourceDAO, LVector windowContentSize, LVector prefVirtualSize, ScaleMode scaleMode, double aspectRatio) {
 		this.resourceDAO = resourceDAO;

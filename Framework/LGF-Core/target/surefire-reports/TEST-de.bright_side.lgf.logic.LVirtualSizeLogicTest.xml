@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0.015" tests="28" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0.096" tests="28" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="DE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\phhey\AppData\Local\Temp\surefire3992481957984737285\surefirebooter2267322386888057691.jar C:\Users\phhey\AppData\Local\Temp\surefire3992481957984737285 2019-10-26T11-28-14_009-jvmRun1 surefire5682713402243984813tmp surefire_08639751716120336645tmp"/>
+    <property name="sun.java.command" value="C:\Users\phhey\AppData\Local\Temp\surefire2159200613599978527\surefirebooter8072703201557688223.jar C:\Users\phhey\AppData\Local\Temp\surefire2159200613599978527 2019-10-28T18-01-37_861-jvmRun1 surefire3400224828240276913tmp surefire_07810640223273776497tmp"/>
     <property name="surefire.test.class.path" value="C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core\target\test-classes;C:\Philip\Development\Android\LeinwandGF\Framework\LGF-Core\target\classes;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter\5.5.2\junit-jupiter-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\phhey\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\phhey\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\phhey\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\phhey\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;C:\Users\phhey\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\phhey"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\phhey\AppData\Local\Temp\surefire3992481957984737285\surefirebooter2267322386888057691.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\phhey\AppData\Local\Temp\surefire2159200613599978527\surefirebooter8072703201557688223.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -52,7 +52,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_221/bin/server;C:/Program Files/Java/jre1.8.0_221/bin;C:/Program Files/Java/jre1.8.0_221/lib/amd64;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\PortablePrograms\Maven\apache-maven-3.6.2\bin;;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\nodejs\;C:\Users\phhey\AppData\Local\Microsoft\WindowsApps;C:\Users\phhey\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk1.8.0_131\bin;;C:\Users\phhey\AppData\Local\Microsoft\WindowsApps;C:\Users\phhey\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\phhey\AppData\Roaming\npm;C:\PortablePrograms\Eclipse\eclipse-jee-2019-06-R-win32-x86_64\eclipse;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\PortablePrograms\Maven\apache-maven-3.6.2\bin;;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\nodejs\;C:\Users\phhey\AppData\Local\Microsoft\WindowsApps;C:\Users\phhey\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk1.8.0_131\bin;;C:\Users\phhey\AppData\Local\Microsoft\WindowsApps;C:\Users\phhey\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\phhey\AppData\Roaming\npm;."/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="25.131-b11"/>
@@ -78,7 +78,7 @@
   <testcase name="getVirtualSize_fitBothSimple" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0"/>
   <testcase name="getVirtualSize_matchYSimple" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0"/>
   <testcase name="getVirtualSize_fitBothPixelsHalfAsHighAsTheyAreWide" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0"/>
-  <testcase name="getVirtualSize_matchYScreenHalfAsHighAsWide" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0.015"/>
+  <testcase name="getVirtualSize_matchYScreenHalfAsHighAsWide" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0"/>
   <testcase name="getVirtualSize_fitBothScreenHalfAsHighAsWide" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0"/>
   <testcase name="getVirtualSize_matchYScreenTwiceAsHighAsWide" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0"/>
   <testcase name="getVirtualSize_matchXRequestTwiceYButNoExtraSizeExists" classname="de.bright_side.lgf.logic.LVirtualSizeLogicTest" time="0"/>

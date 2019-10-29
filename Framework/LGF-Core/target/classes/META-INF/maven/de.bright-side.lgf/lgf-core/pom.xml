@@ -17,8 +17,11 @@
 	<version>1.0.0</version>
 
 	<name>core</name>
-	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
+	<description>Core module for the Leinwand GF graphics framework</description>
+	<url>https://github.com/pheyse/LeinwandGF</url>
+
+
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -81,4 +84,13 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+
 </project>

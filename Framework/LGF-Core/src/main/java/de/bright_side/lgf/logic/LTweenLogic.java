@@ -115,7 +115,8 @@ public class LTweenLogic {
 	
 	/**
 	 * 
-	 * @param object
+	 * @param object object for which the tweens should be updated
+	 * @param secondsSinceLastUpdate the amount of seconds since the last update
 	 * @return true if the tweens have been completed in this iteration
 	 */
 	public boolean updateTweens(LObject object, double secondsSinceLastUpdate) {

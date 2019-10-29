@@ -90,3 +90,5 @@ trestle.keystore
 *.war
 *.ear
 
+
+*.asc
