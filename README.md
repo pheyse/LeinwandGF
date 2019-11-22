@@ -23,9 +23,9 @@ The framework is very easy to use. LGF provides many features such as:
 In the dependencies section of the „build.gralde“ file simply add this line:
 
 ```
-implementation 'de.bright-side.lgf:lgf-android:1.0.1'
+implementation 'de.bright-side.lgf:lgf-android:1.1.0'
 ```
-(Please replace "1.0.1" with the current framwork version.)
+(Please replace "1.1.0" with the current framwork version.)
 
 
 ## Java Deskop (Windows, Linux, Mac)
