@@ -30,6 +30,9 @@ public class LObject {
     private boolean touchable;
     private LAction touchAction;
     private List<LTween> tweens;
+    private double opacity = 1;
+    private LVector panelSize;
+    private List<LObject> panelObjects;
 
     public String getType() {
         return type;
@@ -247,6 +250,30 @@ public class LObject {
 		this.tweens = tweens;
 	}
 
+	public double getOpacity() {
+		return opacity;
+	}
+
+	public void setOpacity(double opacity) {
+		this.opacity = opacity;
+	}
+
+	public LVector getPanelSize() {
+		return panelSize;
+	}
+
+	public void setPanelSize(LVector panelSize) {
+		this.panelSize = panelSize;
+	}
+
+	public List<LObject> getPanelObjects() {
+		return panelObjects;
+	}
+
+	public void setPanelObjects(List<LObject> panelObjects) {
+		this.panelObjects = panelObjects;
+	}
+
 	@Override
 	public String toString() {
 		return "LObject [type=" + type + ", id=" + id + ", pos=" + pos + ", image=" + image + ", backgroundColor=" + backgroundColor + ", size=" + size + ", text=" + text
@@ -254,8 +281,8 @@ public class LObject {
 				+ ", textFont=" + textFont + ", textColor=" + textColor + ", textOutlineColor=" + textOutlineColor + ", textShadowColor=" + textShadowColor + ", textShadowOffset="
 				+ textShadowOffset + ", textSize=" + textSize + ", path=" + path + ", nextPathItem=" + nextPathItem + ", maximumRotationPerSecond=" + maximumRotationPerSecond
 				+ ", animationFrames=" + animationFrames + ", animationFrameIndex=" + animationFrameIndex + ", remainingSecondsInAnimationFrame=" + remainingSecondsInAnimationFrame
-				+ ", touchable=" + touchable + ", touchAction=" + touchAction + ", tweens=" + tweens + "]";
+				+ ", touchable=" + touchable + ", touchAction=" + touchAction + ", tweens=" + tweens + ", opacity=" + opacity + ", panelSize=" + panelSize + ", panelObjects="
+				+ panelObjects + "]";
 	}
-
 
 }

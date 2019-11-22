@@ -309,7 +309,7 @@ public abstract class LAndroidPlatform implements LPlatform, LLogger {
 
     @Override
     public void setPresenter(LScreenPresenter presenter) {
-        lActivity.setGameScreenPresenter(presenter);
+        lActivity.setScreenPresenter(presenter);
     }
 
     public static void toast(final Context context, final String message){

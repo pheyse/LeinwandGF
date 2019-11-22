@@ -14,7 +14,7 @@ import de.bright_side.lgfdemo.base.DemoConstants;
 import de.bright_side.lgfdemo.model.DemoFont;
 
 public class DemoPresenterUtil {
-	private static final double BUTTON_WIDTH = 20;
+	private static final double BUTTON_WIDTH = 18;
 	private static final double BUTTON_HEIGHT = 10;
 	private static final double BUTTON_DISTANCE = BUTTON_WIDTH + 3;
 	private static final double MENU_BUTTON_POS_FROM_BOTTOM = BUTTON_HEIGHT + 5;
@@ -33,7 +33,7 @@ public class DemoPresenterUtil {
 		
 		boolean landscape = isLandscapeOrientation(view);
 		
-		int startPosX = 20;
+		int startPosX = 15;
 		int posX = startPosX;
 		int posY = (int)MENU_BUTTON_POS_FROM_BOTTOM;
 		int useButtonDistance = (int)BUTTON_DISTANCE;
@@ -58,6 +58,8 @@ public class DemoPresenterUtil {
 			posY -= 20;
 		}
 		result.add(createScreenButton(platform, view, posX, posY, useButtonWidth, "Tween", () -> platform.setPresenter(new DemoScreenTweenPresenter(platform, view))));
+		posX += useButtonDistance;
+		result.add(createScreenButton(platform, view, posX, posY, useButtonWidth, "Panel", () -> platform.setPresenter(new DemoScreenPanelPresenter(platform, view))));
 		posX += useButtonDistance;
 		result.add(createScreenButton(platform, view, posX, posY, useButtonWidth, "Animation", () -> platform.setPresenter(new DemoScreenAnimationPresenter(platform, view))));
 		posX += useButtonDistance;

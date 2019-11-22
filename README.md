@@ -35,10 +35,10 @@ In the Maven pom.xml file simply add this dependency:
 	<dependency>
 		<groupId>de.bright-side.lgf</groupId>
 		<artifactId>lgf-pc</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</dependency>
 ```
-(Please replace "1.0.0" with the current framwork version.)
+(Please replace "1.1.0" with the current framwork version.)
 
 
 ## Further information
@@ -46,3 +46,10 @@ Please look at the file "LeinwandGF-Documentation.odt" for more information:
  - usage
  - concepts
  - PC and Andorid demo project
+Also look at the demo apps for desktop and Android in the "DemoProjects" folder.
+ 
+# Versions
+2019-11-22: 
+ - support for panels (sub-objects) in LObject
+ - support for continuous opacity value
+ - panel demo screen in demo app

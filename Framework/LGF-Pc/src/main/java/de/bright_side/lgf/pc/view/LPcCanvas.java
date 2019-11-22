@@ -1,6 +1,8 @@
 package de.bright_side.lgf.pc.view;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -18,7 +20,7 @@ import de.bright_side.lgf.pc.base.LPcUtil;
 import de.bright_side.lgf.util.LMathsUtil;
 import de.bright_side.lgf.view.LCanvas;
 
-public class LPcGameCanvas implements LCanvas {
+public class LPcCanvas implements LCanvas {
     private static final double FONT_TEXT_SIZE_FACTOR = 1.1;
 	private LVector virtualSize;
     private LVector nativeCanvasSize;
@@ -27,7 +29,7 @@ public class LPcGameCanvas implements LCanvas {
 	private LVector scrollOffset;
 	private final Font DEFAULT_FONT = new Font("sansserif", Font.PLAIN, 24);
 
-    public LPcGameCanvas(LLogger logger, LVector virtualSize, Graphics2D graphics, LVector nativeCanvasSize, LVector cameraPos) {
+    public LPcCanvas(LLogger logger, LVector virtualSize, Graphics2D graphics, LVector nativeCanvasSize, LVector cameraPos) {
         this.virtualSize = virtualSize;
         this.graphics = graphics;
         this.nativeCanvasSize = nativeCanvasSize;
@@ -53,17 +55,32 @@ public class LPcGameCanvas implements LCanvas {
     }
     
 	@Override
-    public void fillRectCentered(LVector pos, LVector size, LColor color, boolean considerCameraPos) {
+    public void fillRectCentered(LVector pos, LVector size, LColor color, double opacity, boolean considerCameraPos) {
+		if (opacity <= 0) {
+			return;
+		}
     	LVector usePos = applyCameraPos(pos, considerCameraPos);
-        graphics.setColor(new Color(color.getAsInt()));
+        Color useColor = applyOpacity(color, opacity);
+		graphics.setColor(useColor);
         LVector centeredPos = LMathsUtil.add(usePos, -size.getX() / 2, -size.getY() / 2);
         Rectangle rect = toRectInNativeCanvas(centeredPos, size);
         graphics.fillRect(rect.x, rect.y, rect.width, rect.height);
     }
 
+	private Color applyOpacity(LColor color, double opacity) {
+		Color useColor = new Color(color.getAsInt());
+        if (opacity < 1) {
+        	useColor = new Color(useColor.getRed(), useColor.getGreen(), useColor.getBlue(), (int)(useColor.getAlpha() * opacity));
+        }
+		return useColor;
+	}
+
 	@Override
 	public void drawTextCentered(LVector pos, String text, double textSize, LColor color, LColor outlineColorOrNull, LFont fontOrNull
-			, LVector shadowOffset, LColor shadowColor, boolean considerCameraPos) {
+			, LVector shadowOffset, LColor shadowColor, double opacity, boolean considerCameraPos) {
+    	if (opacity <= 0) {
+    		return;
+    	}
 		
     	LVector usePos = applyCameraPos(pos, considerCameraPos);
     	
@@ -82,13 +99,13 @@ public class LPcGameCanvas implements LCanvas {
         topLeft.setY(topLeft.getY() + Math.abs(graphics.getFontMetrics().getAscent() / 2));
         
         if (shadowColor != null){
-        	graphics.setColor(new Color(shadowColor.getAsInt()));
+        	graphics.setColor(applyOpacity(shadowColor, opacity));
             LVector shadowOffsetInNativeCanvas = toPointInNativeCanvas(shadowOffset);
             graphics.drawString(text, (int)(topLeft.getX() + shadowOffsetInNativeCanvas.getX()), (int)(topLeft.getY() + shadowOffsetInNativeCanvas.getY()));
         }
         
         if (outlineColorOrNull != null){
-        	graphics.setColor(new Color(outlineColorOrNull.getAsInt()));
+        	graphics.setColor(applyOpacity(outlineColorOrNull, opacity));
             for (int textOffsetX = -1; textOffsetX <= 1; textOffsetX ++){
                 for (int textOffsetY = -1; textOffsetY <= 1; textOffsetY ++){
                     if ((textOffsetX != 0) || (textOffsetY != 0)){
@@ -98,9 +115,8 @@ public class LPcGameCanvas implements LCanvas {
             }
         }
 
-        
         if (color != null){
-        	graphics.setColor(new Color(color.getAsInt()));
+        	graphics.setColor(applyOpacity(color, opacity));
         } else {
         	graphics.setColor(Color.BLACK);
         }
@@ -123,7 +139,17 @@ public class LPcGameCanvas implements LCanvas {
 
 
     @Override
-    public void drawImageCentered(LVector pos, LVector size, LImage image, double rotation, boolean considerCameraPos) {
+    public void drawImageCentered(LVector pos, LVector size, LImage image, double rotation, double opacity, boolean considerCameraPos) {
+    	if (opacity <= 0) {
+    		return;
+    	}
+    	
+    	Composite originalComposite = null;
+    	if (opacity < 1) {
+    		originalComposite = graphics.getComposite();
+    		graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float)opacity));
+    	}
+    	
     	LVector usePos = applyCameraPos(pos, considerCameraPos);
     	
         LVector useSize = toPointInNativeCanvas(size);
@@ -144,7 +170,8 @@ public class LPcGameCanvas implements LCanvas {
 		drawLocationX = (int)(posInCanvas.getX() - (imageOriginalWidth * scaleFactorX) / 2d);
 		drawLocationY = (int)(posInCanvas.getY() - (imageOriginalHeight * scaleFactorY) / 2d);
 		if (rotation == 0) {
-			graphics.drawImage(bufferedImage, drawLocationX, drawLocationY, LPcUtil.cielInt(scaleFactorX * imageOriginalWidth), LPcUtil.cielInt(scaleFactorY * imageOriginalHeight), null);			
+			graphics.drawImage(bufferedImage, drawLocationX, drawLocationY, LPcUtil.cielInt(scaleFactorX * imageOriginalWidth), LPcUtil.cielInt(scaleFactorY * imageOriginalHeight), null);
+			resetOpacity(originalComposite);
 			return;
 		}
 		
@@ -154,6 +181,7 @@ public class LPcGameCanvas implements LCanvas {
 			drawLocationX = (int)(posInCanvas.getX() - (bufferedImage.getWidth() * scaleFactorX) / 2d);
 			drawLocationY = (int)(posInCanvas.getY() - (bufferedImage.getHeight() * scaleFactorY) / 2d);
 			drawWithRotation(drawLocationX, drawLocationY, bufferedImage, rotation);
+			resetOpacity(originalComposite);
 			return;
 		}
 		
@@ -166,9 +194,16 @@ public class LPcGameCanvas implements LCanvas {
 		tx.concatenate(AffineTransform.getScaleInstance(scaleFactorX, scaleFactorY));
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 		graphics.drawImage(op.filter(bufferedImage, null), drawLocationX, drawLocationY, null);
+		resetOpacity(originalComposite);
     }
 
     
+	private void resetOpacity(Composite originalComposite) {
+		if (originalComposite != null) {
+			graphics.setComposite(originalComposite);
+		}
+	}
+
 	private BufferedImage scaleImage(BufferedImage original, int newWidth, int newHeight) {
 		BufferedImage resized = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_4BYTE_ABGR);
 		Graphics2D g = resized.createGraphics();

@@ -24,6 +24,10 @@ public class LMathsUtil {
         return new LVector(vector.x + value, vector.y + value);
     }
 
+    public static LVector subtract(LVector vector, double value){
+    	return new LVector(vector.x - value, vector.y - value);
+    }
+    
     public static LVector subtract(LVector vectorA, LVector vectorB) {
         return new LVector(vectorA.x - vectorB.x, vectorA.y - vectorB.y);
     }

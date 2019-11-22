@@ -18,11 +18,11 @@ import de.bright_side.lgf.pc.base.LPcUtil;
 import de.bright_side.lgf.util.LMathsUtil;
 import de.bright_side.lgf.view.LScreenView;
 
-public class LPcGameViewComponent extends JComponent {
+public class LPcViewComponent extends JComponent {
 	private static final long serialVersionUID = -7513394895347926330L;
 	private LLogger logger;
 
-    private LScreenView gameView;
+    private LScreenView screenView;
 	private LVector virtualSize;
 	private LVector lastTouchPos;
 	private LVector dragStartPos;
@@ -33,7 +33,7 @@ public class LPcGameViewComponent extends JComponent {
 	private List<LObject> touchedObjects;
 	private boolean backPressed;
 	
-	public LPcGameViewComponent(LPlatform platform, LVector virtualSize) {
+	public LPcViewComponent(LPlatform platform, LVector virtualSize) {
 		logger = platform.getLogger();
 		this.virtualSize = virtualSize;
 		
@@ -73,7 +73,7 @@ public class LPcGameViewComponent extends JComponent {
 				if (event.getButton() == 1) {
 					mouseDown = true;
 					if (touchedObjects == null){
-						touchedObjects = gameView.getTouchedObjects(LPcUtil.applyCameraPos(pos, virtualSize, gameView), pos);
+						touchedObjects = screenView.getTouchedObjects(LPcUtil.applyCameraPos(pos, virtualSize, screenView), pos);
 					}
 					clickPos = pos;
 					touchDownPos = pos;
@@ -118,20 +118,20 @@ public class LPcGameViewComponent extends JComponent {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-        if (gameView != null){
+        if (screenView != null){
         	RenderingHints rh = new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         	rh.add(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
         	rh.add(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
         	rh.add(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
         	((Graphics2D)g).setRenderingHints(rh);
         	
-            gameView.draw(new LPcGameCanvas(logger, virtualSize, (Graphics2D)g, new LVector(getWidth(), getHeight()), gameView.getCameraPos()));
+            screenView.draw(new LPcCanvas(logger, virtualSize, (Graphics2D)g, new LVector(getWidth(), getHeight()), screenView.getCameraPos()));
         }
 
 	}
 
-    public void setGameView(LScreenView gameView) {
-        this.gameView = gameView;
+    public void setScreenView(LScreenView screenView) {
+        this.screenView = screenView;
     }
 
 	public void update(long millisSinceLastUpdate) {

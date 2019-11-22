@@ -32,9 +32,9 @@ public class LPcMainWindow extends JFrame{
 	
 	private LVector virtualSize;
 	
-	private LScreenView gameView;
-	private LScreenPresenter gamePresenter;
-	private LPcGameViewComponent gameViewComponent;
+	private LScreenView screenView;
+	private LScreenPresenter currentPresenter;
+	private LPcViewComponent viewComponent;
 	private LVector windowContentSize;
 	private LPcInstance instance;
 	
@@ -50,8 +50,8 @@ public class LPcMainWindow extends JFrame{
     		
     		addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent evt) {
-					if (gamePresenter != null) {
-						gamePresenter.onClose();
+					if (currentPresenter != null) {
+						currentPresenter.onClose();
 					}
 					System.exit(0);
 				}
@@ -63,8 +63,8 @@ public class LPcMainWindow extends JFrame{
 
 				public void keyReleased(KeyEvent e) {
 					if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-						if (gameViewComponent != null){
-							gameViewComponent.setBackPressed(true);
+						if (viewComponent != null){
+							viewComponent.setBackPressed(true);
 						}
 					}
 				}
@@ -79,12 +79,15 @@ public class LPcMainWindow extends JFrame{
 	}
 	
 	public void init(LPcPlatform platform) {
-        gameView = new LScreenView(platform, virtualSize, instance.getScaleFactor());
-        gamePresenter = instance.createFirstScreenPresenter(platform, gameView);
-        gameViewComponent = new LPcGameViewComponent(platform, virtualSize);
-        gameViewComponent.setGameView(gameView);
+        screenView = new LScreenView(platform, virtualSize, instance.getScaleFactor());
+        currentPresenter = instance.createFirstScreenPresenter(platform, screenView);
+        if (currentPresenter == null) {
+        	throw new RuntimeException("the method createFirstScreenPresenter that is overwritten by the developer who uses LGF returned null");
+        }
+        viewComponent = new LPcViewComponent(platform, virtualSize);
+        viewComponent.setScreenView(screenView);
 		
-		getContentPane().add(gameViewComponent, BorderLayout.CENTER);
+		getContentPane().add(viewComponent, BorderLayout.CENTER);
 		setSize((int)windowContentSize.x + DECORATION_WIDTH, (int)windowContentSize.y + DECORATION_HEIGHT);
 		setLocationRelativeTo(null);
 		
@@ -117,17 +120,17 @@ public class LPcMainWindow extends JFrame{
 				while (true) {
 					try {
 						long currentTime = System.nanoTime() / 1_000_000;
-						LInput gameInput = buildGameInput();
+						LInput input = buildInput();
 						LRenderStatistics statistics = new LRenderStatistics(remainingSleepTime, drawDuration, updateDuration);
 						
-						LUtil.callTouchedActions(gameInput.getTouchedObjects(), errorListener);
-						if (gamePresenter != null){
-							gamePresenter.update(gameInput, (currentTime - lastTime) / MILLIS_PER_SECOND, statistics);
+						LUtil.callTouchedActions(input.getTouchedObjects(), errorListener);
+						if (currentPresenter != null){
+							currentPresenter.update(input, (currentTime - lastTime) / MILLIS_PER_SECOND, statistics);
 						}
 						long timeAfterUpdate = System.nanoTime() / 1_000_000;
 						updateDuration = timeAfterUpdate - currentTime;
-						if (gameViewComponent != null){
-							gameViewComponent.update(currentTime - lastTime);
+						if (viewComponent != null){
+							viewComponent.update(currentTime - lastTime);
 						}
 						lastTime = currentTime;
 						drawDuration = (System.nanoTime() / 1_000_000) - timeAfterUpdate;
@@ -153,30 +156,30 @@ public class LPcMainWindow extends JFrame{
 		return result;
 	}
 
-	private LInput buildGameInput() {
+	private LInput buildInput() {
 		LInput result = new LInput();
-		result.setBackButtonPressed(gameViewComponent.isBackPressed());
-		result.setTouchedObjects(gameViewComponent.getTouchedObjects());
+		result.setBackButtonPressed(viewComponent.isBackPressed());
+		result.setTouchedObjects(viewComponent.getTouchedObjects());
 
-		if (!gameViewComponent.isMouseDown()){
-			gameViewComponent.resetEvents();
+		if (!viewComponent.isMouseDown()){
+			viewComponent.resetEvents();
 			return result;
 		}
 		
 		LPointer pointer = new LPointer();
-		result.setWasTouched(gameViewComponent.getClickPos() != null);
+		result.setWasTouched(viewComponent.getClickPos() != null);
 		
-		pointer.setTouchDownPos(gameViewComponent.getTouchDownPos());
+		pointer.setTouchDownPos(viewComponent.getTouchDownPos());
 		
-		if (gameViewComponent.getDragMoveAmount() != null){
-			pointer.setDragDistance(gameViewComponent.getDragMoveAmount());
+		if (viewComponent.getDragMoveAmount() != null){
+			pointer.setDragDistance(viewComponent.getDragMoveAmount());
 		} else {
 			pointer.setDragDistance(new LVector(0,  0));
 		}
-		pointer.setPos(gameViewComponent.getLastTouchPos());
+		pointer.setPos(viewComponent.getLastTouchPos());
 		result.setPointers(singleItemMap(pointer));
 		
-		gameViewComponent.resetEvents();
+		viewComponent.resetEvents();
 		return result;
 	}
 
@@ -188,7 +191,7 @@ public class LPcMainWindow extends JFrame{
 	}
 
 	public void setPresenter(LScreenPresenter presenter) {
-		gamePresenter = presenter;
+		currentPresenter = presenter;
 	}
 
 }

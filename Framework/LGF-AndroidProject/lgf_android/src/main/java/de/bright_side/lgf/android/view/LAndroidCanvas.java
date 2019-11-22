@@ -20,6 +20,7 @@ import de.bright_side.lgf.util.LMathsUtil;
 import de.bright_side.lgf.view.LCanvas;
 
 public class LAndroidCanvas implements LCanvas {
+    private static final double MAX_COLOR_CHANNEL = 255;
     private final LVector scrollOffset;
     private LVector virtualSize;
     private LVector cameraPos;
@@ -57,17 +58,32 @@ public class LAndroidCanvas implements LCanvas {
     }
 
     @Override
-    public void fillRectCentered(LVector pos, LVector size, LColor color, boolean considerCameraPos) {
+    public void fillRectCentered(LVector pos, LVector size, LColor color, double opacity, boolean considerCameraPos) {
+        if (opacity <= 0){
+            return;
+        }
+        int useColor = applyOpacity(color, opacity);
         LVector usePos = applyCameraPos(pos, considerCameraPos);
-        paint.setColor(color.getAsInt());
+        paint.setColor(useColor);
         paint.setStyle(Paint.Style.FILL);
         LVector centeredPos = LMathsUtil.add(usePos, -size.x / 2, -size.y / 2);
         nativeCanvas.drawRect(toRectInNativeCanvas(centeredPos, size), paint);
     }
 
+    private int applyOpacity(LColor color, double opacity) {
+        int useColor = color.getAsInt();
+        if (opacity < 1){
+            useColor = Color.argb((int)(Color.alpha(useColor) * opacity), Color.red(useColor), Color.green(useColor), Color.blue(useColor));
+        }
+        return useColor;
+    }
+
     @Override
     public void drawTextCentered(LVector pos, String text, double textSize, LColor color, LColor outlineColorOrNull,
-                                 LFont fontOrNull, LVector shadowOffset, LColor shadowColor, boolean considerCameraPos) {
+                                 LFont fontOrNull, LVector shadowOffset, LColor shadowColor, double opacity, boolean considerCameraPos) {
+        if (opacity <= 0){
+            return;
+        }
         LVector usePos = applyCameraPos(pos, considerCameraPos);
         paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (float)textSize, resources.getDisplayMetrics()));
 
@@ -89,13 +105,13 @@ public class LAndroidCanvas implements LCanvas {
         int y = (int)(topLeft.y);
 
         if ((shadowColor != null) && (shadowColor.getAsInt() != Color.TRANSPARENT)){
-            paint.setColor(shadowColor.getAsInt());
+            paint.setColor(applyOpacity(shadowColor, opacity));
             LVector shadowOffsetInNativeCanvas = toPointInNativeCanvas(shadowOffset);
             nativeCanvas.drawText(text, (int)(x + shadowOffsetInNativeCanvas.x), (int)(y + shadowOffsetInNativeCanvas.y), paint);
         }
 
         if ((outlineColorOrNull != null) && (outlineColorOrNull.getAsInt() != Color.TRANSPARENT)){
-            paint.setColor(outlineColorOrNull.getAsInt());
+            paint.setColor(applyOpacity(outlineColorOrNull, opacity));
             for (int textOffsetX = -1; textOffsetX <= 1; textOffsetX ++){
                 for (int textOffsetY = -1; textOffsetY <= 1; textOffsetY ++){
                     if ((textOffsetX != 0) || (textOffsetY != 0)){
@@ -106,7 +122,7 @@ public class LAndroidCanvas implements LCanvas {
         }
 
         if (color != null){
-            paint.setColor(color.getAsInt());
+            paint.setColor(applyOpacity(color, opacity));
         } else {
             paint.setColor(Color.BLACK);
         }
@@ -137,7 +153,10 @@ public class LAndroidCanvas implements LCanvas {
     final static boolean optimize = true;
 
     @Override
-    public void drawImageCentered(LVector pos, LVector size, LImage image, double rotation, boolean considerCameraPos) {
+    public void drawImageCentered(LVector pos, LVector size, LImage image, double rotation, double opacity, boolean considerCameraPos) {
+        if (opacity <= 0){
+            return;
+        }
         LVector posInCanvas = applyCameraPosAndToPointInNativeCanvas(pos, considerCameraPos);
         LVector useSize = toPointInNativeCanvas(size);
         if (optimize){
@@ -156,13 +175,18 @@ public class LAndroidCanvas implements LCanvas {
         float scaleWidth = ((float) newWidth) / width;
         float scaleHeight = ((float) newHeight) / height;
 
+        Paint opacityPaint = null;
+        if (opacity < 1){
+            opacityPaint = new Paint();
+            opacityPaint.setAlpha((int)(MAX_COLOR_CHANNEL * opacity));
+        }
         if (rotation != 0){
             Matrix matrix = new Matrix();
             matrix.postScale(scaleWidth, scaleHeight);
             matrix.postTranslate(-width * scaleWidth / 2, -height * scaleHeight / 2);
             matrix.postRotate((int)rotation);
             matrix.postTranslate((int)posInCanvas.x, (int)posInCanvas.y);
-            nativeCanvas.drawBitmap(bitmap, matrix, null);
+            nativeCanvas.drawBitmap(bitmap, matrix, opacityPaint);
             matrix.reset();
         } else {
             LVector sizeInCanvas = toPointInNativeCanvas(size);
@@ -171,12 +195,12 @@ public class LAndroidCanvas implements LCanvas {
             LVector bottomRightInCanvas = LMathsUtil.add(posInCanvas, halfSizeInCanvas);
             Rect destRect = new Rect((int)topLeftInCanvas.x, (int)topLeftInCanvas.y, (int)bottomRightInCanvas.x, (int)bottomRightInCanvas.y);
             if (image.isHasAlpha()){
-                nativeCanvas.drawBitmap(bitmap, null, destRect, null);
+                nativeCanvas.drawBitmap(bitmap, null, destRect, opacityPaint);
             } else {
                 if (image.getPreRenderedObject() == null){
                     image.setPreRenderedObject(createPreRenderedImage(image, sizeInCanvas));
                 }
-                nativeCanvas.drawBitmap((Bitmap)image.getPreRenderedObject(), null, destRect, null);
+                nativeCanvas.drawBitmap((Bitmap)image.getPreRenderedObject(), null, destRect, opacityPaint);
             }
         }
     }

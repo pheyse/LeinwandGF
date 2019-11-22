@@ -1,10 +1,15 @@
 package de.bright_side.lgf.model;
 
+/**
+ * @author phhey
+ *
+ */
 public class LTween {
 	private LVector posChange;
 	private LVector sizeChange;
 	private double rotationChange;
     private double textSizeChange;
+    private double opacityChange;
     private double durationInSeconds;
     private LAction completionAction;
     
@@ -44,10 +49,16 @@ public class LTween {
 	public void setSizeChange(LVector sizeChange) {
 		this.sizeChange = sizeChange;
 	}
+	public double getOpacityChange() {
+		return opacityChange;
+	}
+	public void setOpacityChange(double opacityChange) {
+		this.opacityChange = opacityChange;
+	}
 	@Override
 	public String toString() {
-		return "LTween [posChange=" + posChange + ", sizeChange=" + sizeChange + ", rotationChange=" + rotationChange + ", textSizeChange=" + textSizeChange
-				+ ", durationInSeconds=" + durationInSeconds + ", completionAction=" + completionAction + "]";
+		return "LTween [posChange=" + posChange + ", sizeChange=" + sizeChange + ", rotationChange=" + rotationChange + ", textSizeChange=" + textSizeChange + ", opacityChange="
+				+ opacityChange + ", durationInSeconds=" + durationInSeconds + ", completionAction=" + completionAction + "]";
 	}
 
     

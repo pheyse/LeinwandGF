@@ -76,7 +76,7 @@ public class LScreenLogic {
         return result;
     }
 
-    public List<LObject> getAllGameObjectsExcludeEnemies(LScreenModel model){
+    public List<LObject> getAllObjectsExcludeEnemies(LScreenModel model){
     	List<LObject> result = new ArrayList<>();
     	if (model.getBackgroundObjects() != null){
     		result.addAll(model.getBackgroundObjects());
@@ -161,7 +161,7 @@ public class LScreenLogic {
         return neededRotation;
     }
 
-    public void updateGameObjectToFollowPath(LObject object, double distanceToConsiderPathPointReached, double maximumSteerRotation) {
+    public void updateObjectToFollowPath(LObject object, double distanceToConsiderPathPointReached, double maximumSteerRotation) {
         List<LVector> path = object.getPath();
         if (path == null){
         	return;

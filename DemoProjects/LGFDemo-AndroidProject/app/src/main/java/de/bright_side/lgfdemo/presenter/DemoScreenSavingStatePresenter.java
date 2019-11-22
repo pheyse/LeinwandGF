@@ -35,7 +35,7 @@ public class DemoScreenSavingStatePresenter implements LScreenPresenter{
 	private LTweenLogic tweenLogic = new LTweenLogic();
 	private LImage ballImage;
 	private LObject stateInfoLabel;
-	private class Sate{
+	private class State{
 		public List<LObject> objects;
 	}
 
@@ -110,7 +110,7 @@ public class DemoScreenSavingStatePresenter implements LScreenPresenter{
 
 	private void loadState() {
 		try {
-			Sate state = platform.readObjectOrNull(StorageType.INTERNAL, PATH_TO_STATE_DATA, Sate.class);
+			State state = platform.readObjectOrNull(StorageType.INTERNAL, PATH_TO_STATE_DATA, State.class);
 			if (state == null) {
 				showStateInfo("There is no saved state");
 				return;
@@ -147,7 +147,7 @@ public class DemoScreenSavingStatePresenter implements LScreenPresenter{
 
 	private void saveState() {
 		try {
-			Sate state = new Sate();
+			State state = new State();
 			state.objects = LUtil.copyWithoutResourceReferences(model.getForegroundObjects());
 			platform.writeObject(StorageType.INTERNAL, PATH_TO_STATE_DATA, state);
 			showStateInfo("Saved state");
@@ -156,8 +156,6 @@ public class DemoScreenSavingStatePresenter implements LScreenPresenter{
 		}
 	}
 	
-	
-
 	@Override
 	public void update(LInput input, double secondsSinceLastUpdate, LRenderStatistics renderStatistics) {
 		List<LObject> objects = screenLogic.getAllObjects(model, false);

@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.bright_side.lgf.android.base.LAndroidUtil;
 import de.bright_side.lgf.android.model.LAndroidActivityModel;
 import de.bright_side.lgf.model.LInput;
 import de.bright_side.lgf.model.LObject;
@@ -44,7 +43,7 @@ public class LAndroidActivityPresenter {
                 PointF f = new PointF();
                 f.x = event.getX(pointerIndex);
                 f.y = event.getY(pointerIndex);
-                model.getActivePointers().put(pointerId, f);
+                model.getActiveInternalPointers().put(pointerId, f);
 
                 //: update pointers
                 LVector posInVirtualScreen = toPosInVirtualScreen(gameViewComponentSize, f.x, f.y);
@@ -53,7 +52,7 @@ public class LAndroidActivityPresenter {
                 LPointer.setTouchDownPos(posInVirtualScreen);
                 LPointer.setPos(posInVirtualScreen);
                 LPointer.setDragDistance(new LVector(0, 0));
-                model.getActiveGamePointers().put(pointerId, LPointer);
+                model.getActivePointers().put(pointerId, LPointer);
 
                 //: set touched objects
                 List<LObject> newTouchedObjects = gameView.getTouchedObjects(LAndroidUtil.applyCameraPos(posInVirtualScreen, virtualSize, gameView), posInVirtualScreen);
@@ -74,13 +73,13 @@ public class LAndroidActivityPresenter {
             }
             case MotionEvent.ACTION_MOVE: { // a pointer was moved
                 for (int size = event.getPointerCount(), i = 0; i < size; i++) {
-                    PointF point = model.getActivePointers().get(event.getPointerId(i));
+                    PointF point = model.getActiveInternalPointers().get(event.getPointerId(i));
                     if (point != null) {
                         point.x = event.getX(i);
                         point.y = event.getY(i);
                     }
 
-                    LPointer LPointer = model.getActiveGamePointers().get(event.getPointerId(i));
+                    LPointer LPointer = model.getActivePointers().get(event.getPointerId(i));
                     if (LPointer != null){
                         LVector posInVirtualScreen = toPosInVirtualScreen(gameViewComponentSize, event.getX(i), event.getY(i));
                         LVector distance = LMathsUtil.subtract(LPointer.getTouchDownPos(), posInVirtualScreen);
@@ -93,18 +92,18 @@ public class LAndroidActivityPresenter {
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
             case MotionEvent.ACTION_CANCEL: {
+                model.getActiveInternalPointers().remove(pointerId);
                 model.getActivePointers().remove(pointerId);
-                model.getActiveGamePointers().remove(pointerId);
                 break;
             }
         }
     }
 
-    public synchronized LInput buildGameInput() {
+    public synchronized LInput buildInput() {
         synchronized (model){
             LInput result = new LInput();
             result.setWasTouched(model.getClickPos() != null);
-            result.setPointers(copy(model.getActiveGamePointers()));
+            result.setPointers(copy(model.getActivePointers()));
             result.setBackButtonPressed(model.isBackButtonPressed());
             result.setTouchedObjects(copy(model.getTouchedObjects()));
             result.setBillingEventOccurred(model.isNewBillingEvent());

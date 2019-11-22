@@ -7,7 +7,7 @@ import de.bright_side.lgf.presenter.LScreenPresenter;
 
 public interface LActivity {
 
-    void setGameScreenPresenter(LScreenPresenter presenter);
+    void setScreenPresenter(LScreenPresenter presenter);
 
     Context getContext();
 

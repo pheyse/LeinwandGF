@@ -46,7 +46,7 @@ public class LUtil {
         }
     }
 
-    private static List<LAnimationFrame> copyGameAnimationListWithoutResourceReferences(List<LAnimationFrame> animationFrames) {
+    private static List<LAnimationFrame> copyAnimationListWithoutResourceReferences(List<LAnimationFrame> animationFrames) {
     	if (animationFrames == null) {
     		return null;
     	}
@@ -99,11 +99,20 @@ public class LUtil {
     	result.setPath(object.getPath());
     	result.setNextPathItem(object.getNextPathItem());
     	result.setMaximumRotationPerSecond(object.getMaximumRotationPerSecond());
-    	result.setAnimationFrames(copyGameAnimationListWithoutResourceReferences(object.getAnimationFrames()));
+    	result.setAnimationFrames(copyAnimationListWithoutResourceReferences(object.getAnimationFrames()));
     	result.setAnimationFrameIndex(object.getAnimationFrameIndex());
     	result.setRemainingSecondsInAnimationFrame(object.getRemainingSecondsInAnimationFrame());
     	result.setTouchable(object.isTouchable());
     	result.setTouchAction(object.getTouchAction());
+    	result.setOpacity(object.getOpacity());
+    	result.setPanelSize(object.getPanelSize());
+    	if (object.getPanelObjects() != null) {
+    		List<LObject> panelObjects = new ArrayList<LObject>();
+    		for (LObject i: object.getPanelObjects()) {
+    			panelObjects.add(copyWithoutResourceReferences(i));
+    		}
+    		object.setPanelObjects(panelObjects);
+    	}
     	return result;
     }
 	

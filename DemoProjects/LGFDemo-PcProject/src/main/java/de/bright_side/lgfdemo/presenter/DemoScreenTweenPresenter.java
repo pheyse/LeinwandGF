@@ -106,11 +106,12 @@ public class DemoScreenTweenPresenter implements LScreenPresenter{
 
 	private LObject createMovingBox() throws Exception {
 		LObject result = screenLogic.createObject(new LVector(30, 10), new LVector(20, 20));
+		result.setOpacity(0);
 		result.setBackgroundColor(platform.getCustomColor(200, 200, 0));
 		screenLogic.setText(result, "Tween", platform.getFont(DemoFont.MOONHOUSE), 10, platform.getColorBlack());
 		
-		double durationInSeconds = 4;
-		tweenLogic.addMoveTween(result, new LVector(150, 40), durationInSeconds);
+		tweenLogic.addOpacityTween(result, 1, 1);
+		tweenLogic.addMoveTween(result, new LVector(150, 40), 4);
 		
 		return result;
 	}
@@ -122,12 +123,12 @@ public class DemoScreenTweenPresenter implements LScreenPresenter{
 		double durationInSeconds = 5;
 		LTween tween = new LTween();
 		tweenLogic.setMoveTween(tween, result.getPos(), new LVector(150, 60), durationInSeconds);
-		tweenLogic.setSizeTween(tween, result, new LVector(20, 20), durationInSeconds);
-//		tween.setCompletionAction(() -> model.setForegroundObjects(new ArrayList<LObject>()));
+		tweenLogic.setSizeTween(tween, result.getSize(), new LVector(20, 20), durationInSeconds);
 		tween.setCompletionAction(() -> result.setImage(blueStarImage));
 		tweenLogic.setRotationTween(tween, result, 359, true, durationInSeconds);
 		tweenLogic.addTween(result, tween);
-		
+
+		tweenLogic.addSizeTween(result, new LVector(10, 10), 1);
 		
 		return result;
 	}

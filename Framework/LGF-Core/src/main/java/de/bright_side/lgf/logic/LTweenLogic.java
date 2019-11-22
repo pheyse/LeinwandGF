@@ -32,7 +32,7 @@ public class LTweenLogic {
 		addTween(object, tween);
 	}
 
-	private LVector getPosAfterAllTweens(LObject object) {
+	public LVector getPosAfterAllTweens(LObject object) {
 		LVector result = object.getPos();
 		List<LTween> tweens = object.getTweens();
 		if (tweens == null) {
@@ -47,8 +47,23 @@ public class LTweenLogic {
 		return result;
 	}
 
-	public void setSizeTween(LTween tween, LObject object, LVector destSize, double durationInSeconds) {
-		LVector sizeChange = LMathsUtil.subtract(destSize, object.getSize());
+	public LVector getSizeAfterAllTweens(LObject object) {
+		LVector result = object.getSize();
+		List<LTween> tweens = object.getTweens();
+		if (tweens == null) {
+			return result;
+		}
+		for (LTween i: tweens) {
+			if (i.getSizeChange() != null) {
+				result = LMathsUtil.add(result, LMathsUtil.multiply(i.getSizeChange(), i.getDurationInSeconds()));
+			}
+		}
+		
+		return result;
+	}
+
+	public void setSizeTween(LTween tween, LVector startSize, LVector destSize, double durationInSeconds) {
+		LVector sizeChange = LMathsUtil.subtract(destSize, startSize);
 		sizeChange = LMathsUtil.divide(sizeChange, durationInSeconds);
 		tween.setDurationInSeconds(durationInSeconds);
 		tween.setSizeChange(sizeChange);
@@ -56,7 +71,32 @@ public class LTweenLogic {
 
 	public void addSizeTween(LObject object, LVector destSize, double durationInSeconds) {
 		LTween tween = new LTween();
-		setSizeTween(tween, object, destSize, durationInSeconds);
+		setSizeTween(tween, getSizeAfterAllTweens(object), destSize, durationInSeconds);
+		addTween(object, tween);
+	}
+	
+	public double getOpacityAfterAllTweens(LObject object) {
+		double result = object.getOpacity();
+		List<LTween> tweens = object.getTweens();
+		if (tweens == null) {
+			return result;
+		}
+		for (LTween i: tweens) {
+			result += i.getOpacityChange();
+		}
+		
+		return result;
+	}
+	
+	public void setOpacityTween(LTween tween, double startValue, double destValue, double durationInSeconds) {
+		double change = (destValue - startValue) / durationInSeconds;
+		tween.setDurationInSeconds(durationInSeconds);
+		tween.setOpacityChange(change);
+	}
+	
+	public void addOpacityTween(LObject object, double destValue, double durationInSeconds) {
+		LTween tween = new LTween();
+		setOpacityTween(tween, getOpacityAfterAllTweens(object), destValue, durationInSeconds);
 		addTween(object, tween);
 	}
 	
@@ -178,6 +218,11 @@ public class LTweenLogic {
 		if (tween.getTextSizeChange() != 0) {
 			double textSizeChange = tween.getTextSizeChange() * seconds;
 			object.setTextSize(object.getTextSize() + textSizeChange);
+		}
+
+		if (tween.getOpacityChange() != 0) {
+			double opacityChange = tween.getOpacityChange() * seconds;
+			object.setOpacity(object.getOpacity() + opacityChange);
 		}
 	}
 	

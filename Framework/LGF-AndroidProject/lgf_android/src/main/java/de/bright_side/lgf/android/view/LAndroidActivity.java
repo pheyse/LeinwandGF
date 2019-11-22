@@ -28,9 +28,9 @@ public abstract class LAndroidActivity extends Activity implements LActivity {
     private LVector virtualSize;
     private double scaleFactor;
     private final LConstants.ScaleMode scaleMode;
-    private LAndroidComponent gameViewComponent;
+    private LAndroidComponent viewComponent;
     private LAndroidActivityPresenter presenter;
-    private LScreenView gameView;
+    private LScreenView screenView;
     private LAndroidActivityModel model;
     private static final boolean LOGGING_ENABLED = true;
 
@@ -54,14 +54,14 @@ public abstract class LAndroidActivity extends Activity implements LActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        gameViewComponent.pause();
+        viewComponent.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LAndroidUtil.enterFullScreenMode(gameViewComponent);
-        gameViewComponent.resume();
+        LAndroidUtil.enterFullScreenMode(viewComponent);
+        viewComponent.resume();
     }
 
     @Override
@@ -75,8 +75,8 @@ public abstract class LAndroidActivity extends Activity implements LActivity {
     }
 
     @Override
-    public void setGameScreenPresenter(LScreenPresenter presenter) {
-        gameViewComponent.setScreenPresenter(presenter);
+    public void setScreenPresenter(LScreenPresenter presenter) {
+        viewComponent.setScreenPresenter(presenter);
     }
 
     public void setPresenter(LAndroidActivityPresenter presenter) {
@@ -85,9 +85,9 @@ public abstract class LAndroidActivity extends Activity implements LActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        LVector size = gameViewComponent.getSizeAsVector();
+        LVector size = viewComponent.getSizeAsVector();
         if (size != null){
-            presenter.onTouchEvent(event, gameView, size);
+            presenter.onTouchEvent(event, screenView, size);
         }
         return super.onTouchEvent(event);
     }
@@ -106,22 +106,27 @@ public abstract class LAndroidActivity extends Activity implements LActivity {
 
 
 
-        model.setActivePointers(new SparseArray<PointF>());
-        model.setActiveGamePointers(new HashMap<Integer, LPointer>());
+        model.setActiveInternalPointers(new SparseArray<PointF>());
+        model.setActivePointers(new HashMap<Integer, LPointer>());
 
-        gameViewComponent = new LAndroidComponent(this);
-        gameViewComponent.setVirtualSize(virtualSize);
-        gameViewComponent.setPlatform(platform);
-        gameViewComponent.setActivityPresenter(presenter);
+        viewComponent = new LAndroidComponent(this);
+        viewComponent.setVirtualSize(virtualSize);
+        viewComponent.setPlatform(platform);
+        viewComponent.setActivityPresenter(presenter);
 
-        LAndroidUtil.enterFullScreenMode(gameViewComponent);
+        LAndroidUtil.enterFullScreenMode(viewComponent);
 
-        setContentView(gameViewComponent);
+        setContentView(viewComponent);
 
         try{
-            gameView = new LScreenView(platform, virtualSize, scaleFactor * ANDROID_ADJUSTMENT);
-            gameViewComponent.setGameView(gameView);
-            gameViewComponent.setScreenPresenter(createFirstScreenPresenter(platform, gameView));
+            screenView = new LScreenView(platform, virtualSize, scaleFactor * ANDROID_ADJUSTMENT);
+            viewComponent.setScreenView(screenView);
+            LScreenPresenter firstScreenPresenter = createFirstScreenPresenter(platform, screenView);
+            if (firstScreenPresenter == null){
+                throw new RuntimeException("the method createFirstScreenPresenter that is overwritten by the developer who uses LGF returned null");
+            }
+            viewComponent.setScreenPresenter(firstScreenPresenter);
+
         } catch (Exception e){
             Log.e(tag, "error", e);
             e.printStackTrace();

@@ -14,8 +14,8 @@ public class LAndroidActivityModel {
     private LVector dragStartPos;
     private LVector clickPos;
     private boolean backButtonPressed = false;
-    private SparseArray<PointF> activePointers;
-    private Map<Integer, LPointer> activeGamePointers;
+    private SparseArray<PointF> activeInternalPointers;
+    private Map<Integer, LPointer> activePointers;
     private List<LObject> touchedObjects = null;
     private boolean newBillingEvent = false;
 
@@ -43,20 +43,20 @@ public class LAndroidActivityModel {
         this.backButtonPressed = backButtonPressed;
     }
 
-    public SparseArray<PointF> getActivePointers() {
+    public SparseArray<PointF> getActiveInternalPointers() {
+        return activeInternalPointers;
+    }
+
+    public void setActiveInternalPointers(SparseArray<PointF> activeInternalPointers) {
+        this.activeInternalPointers = activeInternalPointers;
+    }
+
+    public Map<Integer, LPointer> getActivePointers() {
         return activePointers;
     }
 
-    public void setActivePointers(SparseArray<PointF> activePointers) {
+    public void setActivePointers(Map<Integer, LPointer> activePointers) {
         this.activePointers = activePointers;
-    }
-
-    public Map<Integer, LPointer> getActiveGamePointers() {
-        return activeGamePointers;
-    }
-
-    public void setActiveGamePointers(Map<Integer, LPointer> activeGamePointers) {
-        this.activeGamePointers = activeGamePointers;
     }
 
     public List<LObject> getTouchedObjects() {

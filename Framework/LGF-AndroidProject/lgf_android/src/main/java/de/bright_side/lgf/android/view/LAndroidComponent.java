@@ -25,8 +25,8 @@ public class LAndroidComponent extends SurfaceView implements Runnable {
 
     private LLogger logger;
     volatile boolean playing;
-    private Thread gameThread = null;
-    private LScreenView gameView;
+    private Thread mainThread = null;
+    private LScreenView screenView;
     private LVector virtualSize;
     private LAndroidActivityPresenter activityPresenter;
 
@@ -76,13 +76,13 @@ public class LAndroidComponent extends SurfaceView implements Runnable {
                 idleTime = desiredTimeBetweenIterations - passedTime;
 
                 try {
-                    gameThread.sleep(Math.max(idleTime, 0));
+                    mainThread.sleep(Math.max(idleTime, 0));
                 } catch (InterruptedException ignored) {
                 }
             } catch (Throwable t){
                 t.printStackTrace();
                 try {
-                    gameThread.sleep(500);
+                    mainThread.sleep(500);
                 } catch (InterruptedException ignored) {
                 }
             }
@@ -101,19 +101,19 @@ public class LAndroidComponent extends SurfaceView implements Runnable {
                 canvas = surfaceHolder.lockCanvas();
             }
             canvas.drawColor(Color.BLACK);
-            if (gameView != null){
-                gameView.draw(new LAndroidCanvas(logger, virtualSize, gameView.getCameraPos(), canvas, getResources()));
+            if (screenView != null){
+                screenView.draw(new LAndroidCanvas(logger, virtualSize, screenView.getCameraPos(), canvas, getResources()));
                 androidCanvasSize = new LVector(canvas.getWidth(), canvas.getHeight());
             }
 
             surfaceHolder.unlockCanvasAndPost(canvas);
         } else {
-            Log.d("GameViewComponent", "Surface invalid");
+            Log.d("LAndroidComponent", "Surface invalid");
         }
     }
 
-    public void setGameView(LScreenView gameView) {
-        this.gameView = gameView;
+    public void setScreenView(LScreenView screenView) {
+        this.screenView = screenView;
     }
 
     public LVector getSizeAsVector() {
@@ -131,7 +131,7 @@ public class LAndroidComponent extends SurfaceView implements Runnable {
     private void update(long drawDuration, long updateDuration) {
         long currentTime = getCurrentTime();
         if (screenPresenter != null){
-            LInput LInput = activityPresenter.buildGameInput();
+            LInput LInput = activityPresenter.buildInput();
             LRenderStatistics statistics = new LRenderStatistics(idleTime, drawDuration, updateDuration);
             LUtil.callTouchedActions(LInput.getTouchedObjects(), errorListener);
 
@@ -144,15 +144,15 @@ public class LAndroidComponent extends SurfaceView implements Runnable {
         playing = false;
         screenPresenter.onClose();
         try {
-            gameThread.join();
+            mainThread.join();
         } catch (InterruptedException e) {
         }
     }
 
     public void resume() {
         playing = true;
-        gameThread = new Thread(this);
-        gameThread.start();
+        mainThread = new Thread(this);
+        mainThread.start();
     }
 
     public void setScreenPresenter(LScreenPresenter screenPresenter) {
@@ -166,7 +166,7 @@ public class LAndroidComponent extends SurfaceView implements Runnable {
                 t.printStackTrace();
                 if (LAndroidComponent.this.activityPresenter != null){
                     t.printStackTrace();
-                    Log.e("GameViewComponent", "error", t);
+                    Log.e("LAndroidComponent", "error", t);
                     Toast.makeText(getContext(), "Error: " + t, Toast.LENGTH_LONG).show();
                 }
             }

@@ -3,25 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>de.bright-side.lgf</groupId>
-		<artifactId>pc-parent-project</artifactId>
-		<relativePath>
+  <parent>
+    <groupId>de.bright-side.lgf</groupId>
+    <artifactId>pc-parent-project</artifactId>
+	<relativePath>
 			../LGF-ParentPOM/pom.xml
 	</relativePath>
-		<version>1.0.0</version>
-	</parent>
+	<version>1.1.0</version>
+  </parent>
 
 	<groupId>de.bright-side.lgf</groupId>
-	<artifactId>lgf-core</artifactId>
-	<version>1.0.0</version>
+	<artifactId>lgf-pc</artifactId>
+	<version>1.1.0</version>
 
-	<name>core</name>
-	<description>Core module for the Leinwand GF graphics framework</description>
-	<url>https://github.com/pheyse/LeinwandGF</url>
-
-
-
+	<name>pc</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,10 +26,20 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>5.5.2</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.bright-side.lgf</groupId>
+			<artifactId>lgf-core</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>de.bright-side.filesystemfacade</groupId>
+			<artifactId>filesystemfacade</artifactId>
+			<version>2.6.0</version>
 		</dependency>
 	</dependencies>
 
@@ -84,13 +89,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
-
 </project>
