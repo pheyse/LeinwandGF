@@ -8,16 +8,15 @@ Apace V2
 
 
 # Features and purpose
- - The framework is very easy to use
- -- LGF provides many features such as
- --- Screen scaling
- --- Images, fonts and animations
- --- Running in Android and on Java Desktop (e.g. for faster development and testing)
- --- collision detection
- --- Scrolling
- --- Text effects
- --- Saving and loading states
- --- User input via touch mouse
+The framework is very easy to use. LGF provides many features such as:
+ - Screen scaling
+ - Images, fonts and animations
+ - Running in Android and on Java Desktop (e.g. for faster development and testing)
+ - collision detection
+ - Scrolling
+ - Text effects
+ - Saving and loading states
+ - User input via touch mouse
 
 # Using the framework
 ## Android
