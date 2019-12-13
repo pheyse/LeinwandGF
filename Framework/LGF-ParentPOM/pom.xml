@@ -19,7 +19,7 @@
 	<groupId>de.bright-side.lgf</groupId>
 	<artifactId>pc-parent-project</artifactId>
 	<name>LGF Parent POM Project</name>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 
 	<description>Core module for the Leinwand GF graphics framework</description>
 	<url>https://github.com/pheyse/LeinwandGF</url>

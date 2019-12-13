@@ -19,6 +19,7 @@ import de.bright_side.lgf.pc.base.LPcInstance;
 import de.bright_side.lgf.pc.base.LPcPlatform;
 import de.bright_side.lgf.presenter.LScreenPresenter;
 import de.bright_side.lgf.util.LErrorListener;
+import de.bright_side.lgf.util.LMathsUtil;
 import de.bright_side.lgf.util.LUtil;
 import de.bright_side.lgf.view.LScreenView;
 
@@ -37,6 +38,7 @@ public class LPcMainWindow extends JFrame{
 	private LPcViewComponent viewComponent;
 	private LVector windowContentSize;
 	private LPcInstance instance;
+	private LVector lastTouchPosSendInUpdate;
 	
 	public LPcMainWindow(LPcInstance instance, boolean resume) {
 		this.instance = instance;
@@ -163,6 +165,8 @@ public class LPcMainWindow extends JFrame{
 
 		if (!viewComponent.isMouseDown()){
 			viewComponent.resetEvents();
+			result.setPointers(new HashMap<Integer, LPointer>());
+			lastTouchPosSendInUpdate = null;
 			return result;
 		}
 		
@@ -176,8 +180,17 @@ public class LPcMainWindow extends JFrame{
 		} else {
 			pointer.setDragDistance(new LVector(0,  0));
 		}
-		pointer.setPos(viewComponent.getLastTouchPos());
+		LVector currentTouchPos = viewComponent.getLastTouchPos();
+		if (lastTouchPosSendInUpdate == null) {
+			pointer.setMovement(new LVector(0, 0));
+		} else {
+			pointer.setMovement(LMathsUtil.subtract(lastTouchPosSendInUpdate, currentTouchPos));
+		}
+		
+		pointer.setPos(currentTouchPos);
 		result.setPointers(singleItemMap(pointer));
+		
+		lastTouchPosSendInUpdate = currentTouchPos;
 		
 		viewComponent.resetEvents();
 		return result;

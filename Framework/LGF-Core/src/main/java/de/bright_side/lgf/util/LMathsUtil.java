@@ -43,6 +43,14 @@ public class LMathsUtil {
         return new LVector(Math.round(vector.x), Math.round(vector.y));
     }
 
+    public static LVector round(LVector vector, int digits){
+    	if (vector == null){
+    		return null;
+    	}
+    	double factor = (int)Math.pow(10, digits);
+    	return new LVector(Math.round(factor * vector.x) / factor, Math.round(factor * vector.y) / factor);
+    }
+    
     public static LVector moveInDirection(LVector vector, double direction, double amount){
         double useDirection = direction - 180;
         if (useDirection < 0){

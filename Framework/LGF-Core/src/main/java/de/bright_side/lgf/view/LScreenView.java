@@ -108,7 +108,7 @@ public class LScreenView {
 		childDrawParams.opacityFactor = parentDrawParams.opacityFactor * object.getOpacity();
 		
 		for (LObject i: object.getPanelObjects()) {
-			drawWithPanelItems(canvas, i, false, log, childDrawParams);
+			drawWithPanelItems(canvas, i, considerCameraPos, log, childDrawParams);
 		}
     }
     

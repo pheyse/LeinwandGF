@@ -179,4 +179,5 @@ public class LPcViewComponent extends JComponent {
 	public LVector getTouchDownPos() {
 		return touchDownPos;
 	}
+
 }

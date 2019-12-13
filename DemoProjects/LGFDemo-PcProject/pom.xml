@@ -9,16 +9,14 @@
 		<relativePath>
 			../../Framework/LGF-ParentPOM/pom.xml
 		</relativePath>
-		<version>1.1.0</version>
+		<version>1.2.0</version>
 	</parent>
 
 	<groupId>de.bright-side.lgf</groupId>
 	<artifactId>lgf-pc-demo</artifactId>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 
 	<name>pc-demo</name>
-	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,7 +36,7 @@
 		<dependency>
 			<groupId>de.bright-side.lgf</groupId>
 			<artifactId>lgf-pc</artifactId>
-			<version>1.1.0</version>
+			<version>1.2.0</version>
 		</dependency>
 	</dependencies>
 

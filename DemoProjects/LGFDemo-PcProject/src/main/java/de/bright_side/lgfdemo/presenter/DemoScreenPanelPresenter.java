@@ -10,6 +10,7 @@ import de.bright_side.lgf.model.LImage;
 import de.bright_side.lgf.model.LImageResource;
 import de.bright_side.lgf.model.LInput;
 import de.bright_side.lgf.model.LObject;
+import de.bright_side.lgf.model.LPointer;
 import de.bright_side.lgf.model.LRenderStatistics;
 import de.bright_side.lgf.model.LScreenModel;
 import de.bright_side.lgf.model.LVector;
@@ -158,13 +159,18 @@ public class DemoScreenPanelPresenter implements LScreenPresenter{
 
 	@Override
 	public void update(LInput input, double secondsSinceLastUpdate, LRenderStatistics renderStatistics) {
-		panelSize = LMathsUtil.add(panelSize, panelSizeChangeSpeed);
-		if (panelSize.getX() >= PANEL_SIZE_MAX_X) {
-			panelSizeChangeSpeed = - Math.abs(panelSizeChangeSpeed);
-		} else if (panelSize.getX() <= PANEL_SIZE_MIN_X) {
-			panelSizeChangeSpeed = Math.abs(panelSizeChangeSpeed);
+		updateCameraPos(input);
+		updatePanelSizes();
+		updatePositions();
+	}
+
+	private void updateCameraPos(LInput input) {
+		for (LPointer i: input.getPointers().values()) {
+			view.setCameraPos(LMathsUtil.add(view.getCameraPos(), i.getMovement()));
 		}
-		
+	}
+
+	private void updatePositions() {
 		for (LObject i: model.getForegroundObjects()) {
 			LVector newPos = LMathsUtil.add(i.getPos(), new LVector(0, i.getSpeed()));
 			if (newPos.y > PANEL_MAX_Y) {
@@ -176,7 +182,15 @@ public class DemoScreenPanelPresenter implements LScreenPresenter{
 			}
 			i.setPos(newPos);
 			i.setSize(panelSize);
-			
+		}
+	}
+
+	private void updatePanelSizes() {
+		panelSize = LMathsUtil.add(panelSize, panelSizeChangeSpeed);
+		if (panelSize.getX() >= PANEL_SIZE_MAX_X) {
+			panelSizeChangeSpeed = - Math.abs(panelSizeChangeSpeed);
+		} else if (panelSize.getX() <= PANEL_SIZE_MIN_X) {
+			panelSizeChangeSpeed = Math.abs(panelSizeChangeSpeed);
 		}
 	}
 

@@ -48,7 +48,12 @@ Please look at the file "LeinwandGF-Documentation.odt" for more information:
 Also look at the demo apps for desktop and Android in the "DemoProjects" folder.
  
 # Versions
-2019-11-22: 
+1.1.0: 2019-11-22: 
  - support for panels (sub-objects) in LObject
  - support for continuous opacity value
  - panel demo screen in demo app
+ 
+1.2.0: 2019-12-13: 
+ - bugfix: consider camera position for panel items
+ - pointers in input element in the update method now contains the pointer movement since last update
+ - scrolling in panel demo

@@ -1,6 +1,7 @@
 package de.bright_side.lgf.android.base;
 
 import android.graphics.PointF;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -79,12 +80,13 @@ public class LAndroidActivityPresenter {
                         point.y = event.getY(i);
                     }
 
-                    LPointer LPointer = model.getActivePointers().get(event.getPointerId(i));
-                    if (LPointer != null){
+                    LPointer pointer = model.getActivePointers().get(event.getPointerId(i));
+                    if (pointer != null){
                         LVector posInVirtualScreen = toPosInVirtualScreen(gameViewComponentSize, event.getX(i), event.getY(i));
-                        LVector distance = LMathsUtil.subtract(LPointer.getTouchDownPos(), posInVirtualScreen);
-                        LPointer.setDragDistance(LMathsUtil.multiply(distance, new LVector(-1, -1)));
-                        LPointer.setPos(posInVirtualScreen);
+                        LVector distance = LMathsUtil.subtract(pointer.getTouchDownPos(), posInVirtualScreen);
+                        pointer.setDragDistance(LMathsUtil.multiply(distance, new LVector(-1, -1)));
+                        pointer.setMovement(LMathsUtil.subtract(pointer.getPos(), posInVirtualScreen));
+                        pointer.setPos(posInVirtualScreen);
                     }
                 }
                 break;
@@ -141,6 +143,10 @@ public class LAndroidActivityPresenter {
         LVector dragDistance = pointer.getDragDistance();
         if (dragDistance != null){
             result.setDragDistance(new LVector(dragDistance.x, dragDistance.y));
+        }
+        LVector movement = pointer.getMovement();
+        if (movement != null){
+            result.setMovement(new LVector(movement.x, movement.y));
         }
         return result;
     }

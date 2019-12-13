@@ -7,38 +7,56 @@
 		<groupId>de.bright-side.lgf</groupId>
 		<artifactId>pc-parent-project</artifactId>
 		<relativePath>
-			../LGF-ParentPOM/pom.xml
-	</relativePath>
-		<version>1.1.0</version>
+			../../Framework/LGF-ParentPOM/pom.xml
+		</relativePath>
+		<version>1.2.0</version>
 	</parent>
 
 	<groupId>de.bright-side.lgf</groupId>
-	<artifactId>lgf-core</artifactId>
-	<version>1.1.0</version>
+	<artifactId>lgf-pc-demo</artifactId>
+	<version>1.2.0</version>
 
-	<name>core</name>
-	<description>Core module for the Leinwand GF graphics framework</description>
-	<url>https://github.com/pheyse/LeinwandGF</url>
-
-
-
+	<name>pc-demo</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<skip.assembly>false</skip.assembly>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>5.5.2</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.bright-side.lgf</groupId>
+			<artifactId>lgf-pc</artifactId>
+			<version>1.2.0</version>
 		</dependency>
 	</dependencies>
 
 	<build>
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.sonatype.plugins</groupId> -->
+<!-- 				<artifactId>nexus-staging-maven-plugin</artifactId> -->
+<!-- 				<version>1.6.7</version> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 				disable deployment of the demo project to Maven Central -->
+<!-- 					<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>  -->
+<!-- 					<serverId>ossrh</serverId> -->
+<!-- 					<nexusUrl>https://oss.sonatype.org/</nexusUrl> -->
+<!-- 					<autoReleaseAfterClose>false</autoReleaseAfterClose> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+
+<!-- 		</plugins> -->
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 			<plugins>
@@ -61,10 +79,6 @@
 					<version>2.22.1</version>
 				</plugin>
 				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
-				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>2.5.2</version>
 				</plugin>
@@ -81,16 +95,38 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.0.0</version>
 				</plugin>
+
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>3.2.1</version>
+					<configuration>
+						<!-- <shadedArtifactAttached>true</shadedArtifactAttached> -->
+						<transformers>
+							<transformer
+								implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+								<manifestEntries>
+									<Main-Class>de.bright_side.lgfpcdemo.pconly.DemoLInstance</Main-Class>
+								</manifestEntries>
+							</transformer>
+						</transformers>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>shade</goal>
+							</goals>
+							<id>shade</id>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
-
 </project>
+
+
+
+
